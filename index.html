@@ -217,7 +217,7 @@
             margin-bottom: 15px;
             line-height: 1.2;
             animation: slideInUp 1s ease-out;
-            color: #000000;
+            color: white;
         }
         
         .hero p {
@@ -338,6 +338,13 @@
             color: var(--secondary);
             margin-bottom: 15px;
             position: relative;
+        }
+        
+        /* Black text for specific sections */
+        .section .section-title h2,
+        .testimonials .section-title h2,
+        .newsletter .section-title h2 {
+            color: #000000;
         }
         
         .section-title h2::after {
@@ -870,6 +877,13 @@
             border-top: 1px solid var(--light-gray);
             color: var(--gray);
             font-size: 0.9rem;
+        }
+
+        /* Trademark styling */
+        .tm {
+            font-size: 0.7em;
+            vertical-align: super;
+            font-weight: normal;
         }
 
         /* Scroll to Top Button */
