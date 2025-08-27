@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,997 +21,213 @@
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Poppins', sans-serif; color: var(--dark); background-color: var(--light); line-height: 1.6; overflow-x: hidden; }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: var(--gradient-3);
-            z-index: 1000;
-            transition: width 0.1s ease;
-        }
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--gradient-3); z-index: 1000; transition: width 0.1s ease; }
 
         /* Animation Classes */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-up.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .fade-in.animated {
-            opacity: 1;
-        }
+        .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .fade-up.animated { opacity: 1; transform: translateY(0); }
+        .fade-in { opacity: 0; transition: opacity 0.6s ease; }
+        .fade-in.animated { opacity: 1; }
+        /* Reveal content if JS is off */
+        .no-js .fade-up, .no-js .fade-in { opacity: 1 !important; transform: none !important; }
 
         /* Header Styles */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo svg {
-            margin-bottom: -5px;
-        }
-
-        .logo-tagline {
-            font-size: 0.75rem;
-            color: #1e40af;
-            font-style: italic;
-            font-weight: 400;
-            margin-top: -3px;
-            white-space: nowrap;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-            position: relative;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-3);
-            transition: width 0.3s ease;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu-btn:hover {
-            transform: scale(1.1);
-        }
+        header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); box-shadow: 0 2px 20px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; transition: all 0.3s ease; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; transition: transform 0.3s ease; }
+        .logo svg { margin-bottom: -5px; }
+        .logo-tagline { font-size: 0.75rem; color: #1e40af; font-style: italic; font-weight: 400; margin-top: -3px; white-space: nowrap; }
+        .logo:hover { transform: scale(1.05); }
+        .logo span { color: var(--secondary); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 30px; position: relative; }
+        nav ul li a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 1.1rem; transition: all 0.3s ease; position: relative; padding: 5px 0; }
+        nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gradient-3); transition: width 0.3s ease; }
+        nav ul li a:hover { color: var(--primary); }
+        nav ul li a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; transition: transform 0.3s ease; }
+        .mobile-menu-btn:hover { transform: scale(1.1); }
+        .header-tagline { display: none; font-size: 0.75rem; color: #000; font-style: italic; font-weight: 400; white-space: nowrap; }
         
         /* Hero Section */
-        .hero {
-            background: #000000;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-            animation: heroAnimation 20s ease-in-out infinite;
-        }
-
-        @keyframes heroAnimation {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        .hero { background: #000; color: #fff; padding: 60px 0; text-align: center; position: relative; overflow: hidden; display: flex; align-items: center; }
+        .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 50%, rgba(120,119,198,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(120,219,255,0.3) 0%, transparent 50%); animation: heroAnimation 20s ease-in-out infinite; }
+        @keyframes heroAnimation { 0%, 100% { transform: scale(1) rotate(0deg);} 50% { transform: scale(1.1) rotate(5deg);} }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; margin-bottom: 15px; line-height: 1.2; animation: slideInUp 1s ease-out; color: #fff; }
+        .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; animation: slideInUp 1s ease-out 0.2s both; }
+        .hero-buttons { animation: slideInUp 1s ease-out 0.4s both; }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px);} to { opacity: 1; transform: translateY(0);} }
         
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            line-height: 1.2;
-            animation: slideInUp 1s ease-out;
-            color: white;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            animation: slideInUp 1s ease-out 0.2s both;
-        }
-
-        .hero-buttons {
-            animation: slideInUp 1s ease-out 0.4s both;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            border: 2px solid white;
-            position: relative;
-            overflow: hidden;
-            margin: 5px;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-3);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 0;
-        }
-        
-        .btn:hover {
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: white;
-        }
-
-        .btn-outline::before {
-            background: white;
-        }
-        
-        .btn-outline:hover {
-            color: var(--primary);
-        }
+        .btn { display: inline-block; background: #fff; color: var(--primary); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.4s ease; border: 2px solid #fff; position: relative; overflow: hidden; margin: 5px; }
+        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--gradient-3); transition: left 0.4s ease; z-index: -1; }
+        .btn:hover::before { left: 0; }
+        .btn:hover { color: #fff; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .btn-outline { background-color: transparent; color: #fff; }
+        .btn-outline::before { background: #fff; }
+        .btn-outline:hover { color: var(--primary); }
 
         /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            animation: floating 6s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .floating-element:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
+        .floating-element { position: absolute; animation: floating 6s ease-in-out infinite; }
+        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 60%; right: 10%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 4s; }
+        @keyframes floating { 0%, 100% { transform: translateY(0px) rotate(0deg);} 50% { transform: translateY(-20px) rotate(5deg);} }
         
         /* Sections */
-        .section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-            position: relative;
-        }
-        
+        .section { padding: 100px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; position: relative; }
         /* Black text for specific sections */
         .section .section-title h2,
         .testimonials .section-title h2,
-        .newsletter .section-title h2 {
-            color: #000000;
-        }
-        
-        .section-title h2::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-3);
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-size: 1.1rem;
-        }
+        .newsletter .section-title h2 { color: #000; }
+        .section-title h2::after { content: ""; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--gradient-3); border-radius: 2px; }
+        .section-title p { color: var(--gray); max-width: 700px; margin: 20px auto 0; font-size: 1.1rem; }
 
         /* Why Choose Us Section */
-        .why-choose {
-            background: linear-gradient(135deg, #fed7aa 0%, #fb923c 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .why-choose::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease;
-        }
-
-        .why-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .why-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .why-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
+        .why-choose { background: linear-gradient(135deg, #fed7aa 0%, #fb923c 100%); color: #fff; position: relative; overflow: hidden; }
+        .why-choose::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.1) 0%, transparent 50%); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; position: relative; z-index: 2; }
+        .why-card { text-align: center; padding: 30px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.4s ease; }
+        .why-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.2); }
+        .why-icon { font-size: 3rem; margin-bottom: 20px; background: var(--gradient-3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .why-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
         
         /* Brands Section */
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .brand-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.5s ease;
-            position: relative;
-            border: 1px solid var(--light-gray);
-        }
-
-        .brand-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-        
-        .brand-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .brand-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .brand-image {
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .brand-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .brand-card:hover .brand-image::after {
-            opacity: 0.1;
-        }
-        
-        .brand-logo {
-            max-width: 70%;
-            max-height: 120px;
-            object-fit: contain;
-            transition: all 0.4s ease;
-            z-index: 2;
-            position: relative;
-        }
-        
-        .neurolux-logo {
-            max-width: 65%;
-            max-height: 104px;
-            padding: 15px;
-        }
-        
-        .brand-card:hover .brand-logo {
-            transform: scale(1.1);
-        }
-        
-        .brand-content {
-            padding: 30px;
-        }
-        
-        .brand-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-            transition: color 0.3s ease;
-        }
-
-        .brand-card:hover .brand-content h3 {
-            color: var(--primary);
-        }
-        
-        .brand-content p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .brand-tag {
-            display: inline-block;
-            background: var(--gradient-3);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .brand-card:hover .brand-tag {
-            transform: scale(1.05);
-        }
+        .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .brand-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.5s ease; position: relative; border: 1px solid var(--light-gray); }
+        .brand-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--gradient-3); opacity: 0; transition: opacity 0.3s ease; z-index: -1; }
+        .brand-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .brand-card:hover::before { opacity: 0.05; }
+        .brand-image { height: 220px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); position: relative; overflow: hidden; }
+        .brand-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--gradient-3); opacity: 0; transition: opacity 0.3s ease; }
+        .brand-card:hover .brand-image::after { opacity: 0.1; }
+        .brand-logo { max-width: 70%; max-height: 120px; object-fit: contain; transition: all 0.4s ease; z-index: 2; position: relative; }
+        .neurolux-logo { max-width: 65%; max-height: 104px; padding: 15px; }
+        .brand-card:hover .brand-logo { transform: scale(1.1); }
+        .brand-content { padding: 30px; }
+        .brand-content h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--secondary); transition: color 0.3s ease; }
+        .brand-card:hover .brand-content h3 { color: var(--primary); }
+        .brand-content p { color: var(--gray); margin-bottom: 20px; line-height: 1.6; }
+        .brand-tag { display: inline-block; background: var(--gradient-3); color: #fff; padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: 500; margin-bottom: 15px; transition: all 0.3s ease; }
+        .brand-card:hover .brand-tag { transform: scale(1.05); }
         
         /* Technology Section */
-        .tech-section {
-            background: #f1f5f9;
-            color: var(--dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tech-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        }
-
-        .tech-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .tech-card {
-            background: white;
-            border: 1px solid var(--light-gray);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .tech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .tech-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .tech-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
+        .tech-section { background: #f1f5f9; color: var(--dark); position: relative; overflow: hidden; }
+        .tech-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%); }
+        .tech-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; position: relative; z-index: 2; }
+        .tech-card { background: #fff; border: 1px solid var(--light-gray); border-radius: 20px; padding: 40px 30px; text-align: center; transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .tech-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .tech-icon { font-size: 3rem; margin-bottom: 20px; background: var(--gradient-3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .tech-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
 
         /* Testimonials Section */
-        .testimonials {
-            background: var(--light);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-2);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            color: white;
-        }
-
-        .testimonial-card:hover::before {
-            opacity: 1;
-        }
-
-        .testimonial-stars {
-            color: #fbbf24;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary);
-            transition: color 0.3s ease;
-        }
-
-        .testimonial-card:hover .testimonial-author {
-            color: white;
-        }
+        .testimonials { background: var(--light); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px; }
+        .testimonial-card { background: #fff; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .testimonial-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--gradient-2); opacity: 0; transition: opacity 0.3s ease; z-index: -1; }
+        .testimonial-card:hover { transform: translateY(-10px); color: #fff; }
+        .testimonial-card:hover::before { opacity: 1; }
+        .testimonial-stars { color: #fbbf24; font-size: 1.2rem; margin-bottom: 20px; }
+        .testimonial-text { font-style: italic; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
+        .testimonial-author { font-weight: 600; color: var(--primary); transition: color 0.3s ease; }
+        .testimonial-card:hover .testimonial-author { color: #fff; }
         
         /* Company Info */
-        .company-info {
-            background: linear-gradient(135deg, var(--secondary), var(--dark));
-            color: white;
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .company-info::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .info-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        
-        .info-card p {
-            opacity: 0.9;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .stat-item {
-            text-align: center;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px 15px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
+        .company-info { background: linear-gradient(135deg, var(--secondary), var(--dark)); color: #fff; padding: 80px 0; position: relative; overflow: hidden; }
+        .company-info::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(59,130,246,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139,92,246,0.3) 0%, transparent 50%); }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; position: relative; z-index: 2; }
+        .info-card h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .info-card p { opacity: 0.9; margin-bottom: 20px; line-height: 1.6; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; }
+        .stat-item:hover { background: rgba(255,255,255,0.2); transform: translateY(-5px); }
+        .stat-number { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 5px; background: var(--gradient-3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-label { font-size: 0.9rem; opacity: 0.8; }
 
         /* Newsletter Section */
-        .newsletter {
-            background: #f1f5f9;
-            color: var(--dark);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .newsletter-btn {
-            padding: 15px 30px;
-            background: white;
-            color: var(--primary);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
+        .newsletter { background: #f1f5f9; color: var(--dark); padding: 80px 0; text-align: center; }
+        .newsletter-form { max-width: 500px; margin: 0 auto; display: flex; gap: 15px; margin-top: 30px; }
+        .newsletter-input { flex: 1; padding: 15px 20px; border: none; border-radius: 50px; font-size: 1rem; outline: none; }
+        .newsletter-btn { padding: 15px 30px; background: #fff; color: var(--primary); border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .newsletter-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         
         /* Footer */
-        footer {
-            background-color: white;
-            color: var(--dark);
-            padding: 60px 0 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-col h4 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h4:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--gradient-3);
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-col ul li i {
-            margin-right: 10px;
-            width: 16px;
-            color: var(--primary);
-        }
-        
-        .footer-col ul li a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .footer-col ul li a:hover {
-            color: var(--dark);
-            padding-left: 10px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-3);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid var(--light-gray);
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
+        footer { background-color: #fff; color: var(--dark); padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { font-size: 1.3rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        .footer-col h4:after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 2px; background: var(--gradient-3); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; display: flex; align-items: center; }
+        .footer-col ul li i { margin-right: 10px; width: 16px; color: var(--primary); }
+        .footer-col ul li a { color: var(--gray); text-decoration: none; transition: all 0.3s ease; position: relative; }
+        .footer-col ul li a:hover { color: var(--dark); padding-left: 10px; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: var(--gradient-3); border-radius: 50%; color: #fff; transition: all 0.3s ease; }
+        .social-links a:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 5px 15px rgba(59,130,246,0.4); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid var(--light-gray); color: var(--gray); font-size: 0.9rem; }
 
         /* Trademark styling */
-        .tm {
-            font-size: 0.7em;
-            vertical-align: super;
-            font-weight: normal;
-        }
+        .tm { font-size: 0.7em; vertical-align: super; font-weight: normal; }
 
         /* Scroll to Top Button */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-3);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-        }
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: var(--gradient-3); border: none; border-radius: 50%; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100; }
+        .scroll-top.visible { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(59,130,246,0.4); }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .header-container {
-                padding: 15px 20px;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                border-radius: 0 0 20px 20px;
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .btn {
-                display: block;
-                width: 100%;
-                margin: 10px auto;
-                text-align: center;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .neurolux-logo {
-                max-width: 60%;
-                max-height: 70px;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .floating-element {
-                display: none;
-            }
-
-            .why-grid,
-            .brands-grid,
-            .tech-features,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
+            .header-container { padding: 15px 20px; }
+            nav ul { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; }
+            nav ul.show { display: flex; }
+            nav ul li { margin: 10px 0; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section { padding: 60px 0; }
+            .section-title h2 { font-size: 2rem; }
+            .btn { display: block; width: 100%; margin: 10px auto; text-align: center; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .neurolux-logo { max-width: 60%; max-height: 70px; }
+            .newsletter-form { flex-direction: column; gap: 15px; }
+            .floating-element { display: none; }
+            .why-grid, .brands-grid, .tech-features, .testimonials-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 80px 0;
-            }
+            .hero { padding: 80px 0; }
+            .hero h1 { font-size: 2rem; }
+            .section-title h2 { font-size: 1.8rem; }
+            .container { padding: 0 15px; }
+        }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
+        /* Mobile header alignment additions */
+        @media (max-width: 768px){
+            .header-container{ display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:'menu logo tagline'; align-items:center; }
+            .mobile-menu-btn{ grid-area:menu; display:block; justify-self:start; }
+            .logo{ grid-area:logo; justify-self:center; }
+            .header-tagline{ grid-area:tagline; display:block; justify-self:end; }
+            .logo .logo-tagline{ display:none; }
+        }
+        /* Tablet header alignment additions */
+        @media (max-width: 1024px){
+            .header-container{ display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:'menu logo tagline'; align-items:center; }
+            .mobile-menu-btn{ grid-area:menu; display:block; justify-self:start; }
+            .logo{ grid-area:logo; justify-self:center; }
+            .header-tagline{ grid-area:tagline; display:block; justify-self:end; }
+            .logo .logo-tagline{ display:none; }
+            /* Tablet nav uses hamburger, same as mobile */
+            nav ul{ display:none; position:absolute; top:70px; left:0; right:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); flex-direction:column; padding:20px; box-shadow:0 5px 20px rgba(0,0,0,0.1); border-radius:0 0 20px 20px; }
+            nav ul.show{ display:flex; }
+            nav ul li{ margin:10px 0; }
         }
     </style>
 </head>
@@ -1022,21 +238,22 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
+            <button class="mobile-menu-btn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <a href="#" class="logo">
                 <img src="39dg.co.png" alt="39DG.CO Logo" style="height: 40px; width: auto;">
                 <span class="logo-tagline" style="color: #000000;">bringing vision to life</span>
             </a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
+            <span class="header-tagline" aria-hidden="true">bringing vision to life</span>
+            <nav aria-label="Main navigation">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#brands">Our Brands</a></li>
                     <li><a href="#technology">Technology</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact us">Partnerships</a></li>
+                    <li><a href="#contact">Partnerships</a></li>
                 </ul>
             </nav>
         </div>
@@ -1068,9 +285,7 @@
                 <!-- 39dollarglasses.com Core -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="39dollarglasses.svg" 
-                             alt="39 Dollar Glasses Logo" 
-                             class="brand-logo">
+                        <img src="39dollarglasses.svg" alt="39 Dollar Glasses Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Core Brand</span>
@@ -1083,13 +298,11 @@
                 <!-- OcuSafe Safety Glasses -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="ocusafe.png" 
-                             alt="OcuSafe Logo" 
-                             class="brand-logo">
+                        <img src="ocusafe.png" alt="OcuSafe Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Protection</span>
-                        <h3>OcuSafe Safety Glasses</h3>
+                        <h3>OcuSafe<sup class="tm">™</sup> Safety Glasses</h3>
                         <p>Industrial-grade protective eyewear that meets ANSI Z87.1 standards. Combines safety with comfort for all-day wear in demanding environments.</p>
                         <a href="#" class="btn" style="background-color: #dcfce7; color: var(--primary);">Learn More</a>
                     </div>
@@ -1098,13 +311,11 @@
                 <!-- Neurolux Lenses -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="Neurolux.png" 
-                             alt="Neurolux Logo" 
-                             class="brand-logo neurolux-logo">
+                        <img src="Neurolux.png" alt="Neurolux Logo" class="brand-logo neurolux-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Wellness Focused</span>
-                        <h3>Neurolux Lenses</h3>
+                        <h3>Neurolux<sup class="tm">™</sup> Lenses</h3>
                         <p>Specialized lenses designed to reduce eye strain and fatigue from digital screens. Features blue light filtering and contrast enhancement.</p>
                         <a href="#" class="btn" style="background-color: #ede9fe; color: var(--primary);">Learn More</a>
                     </div>
@@ -1113,13 +324,11 @@
                 <!-- UltimateView Sunglasses -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="ultimateview.png" 
-                             alt="UltimateView Logo" 
-                             class="brand-logo">
+                        <img src="ultimateview.png" alt="UltimateView Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">UV Protection</span>
-                        <h3>UltimateView Lenses</h3>
+                        <h3>UltimateView<sup class="tm">™</sup> Lenses</h3>
                         <p>Premium polarized sunglasses with 100% UV protection. Fashion-forward designs with advanced lens technology for superior visual clarity.</p>
                         <a href="#" class="btn" style="background-color: #cffafe; color: var(--primary);">Learn More</a>
                     </div>
@@ -1128,13 +337,11 @@
                 <!-- OcuSleep Lenses -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="ocusleep.png" 
-                             alt="OcuSleep Logo" 
-                             class="brand-logo">
+                        <img src="ocusleep.png" alt="OcuSleep Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Sleep Solution</span>
-                        <h3>OcuSleep Lenses</h3>
+                        <h3>OcuSleep<sup class="tm">™</sup> Lenses</h3>
                         <p>Proprietary lens technology that helps regulate circadian rhythm by filtering specific light wavelengths, promoting better sleep quality.</p>
                         <a href="#" class="btn" style="background-color: #fce7f3; color: var(--primary);">Learn More</a>
                     </div>
@@ -1143,13 +350,11 @@
                 <!-- Blue495 -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="blue495.png" 
-                             alt="Blue495 Logo" 
-                             class="brand-logo">
+                        <img src="blue495.png" alt="Blue495 Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Blue Light Defense</span>
-                        <h3>Blue495</h3>
+                        <h3>Blue495<sup class="tm">™</sup></h3>
                         <p>Advanced blue light filtering technology that specifically targets the 495nm wavelength. Scientifically designed to reduce digital eye strain and protect against harmful high-energy visible light.</p>
                         <a href="#" class="btn" style="background-color: #dbeafe; color: var(--primary);">Learn More</a>
                     </div>
@@ -1158,9 +363,7 @@
                 <!-- OnlineContacts.com -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="Onlinecontacts.png" 
-                             alt="OnlineContacts Logo" 
-                             class="brand-logo">
+                        <img src="Onlinecontacts.png" alt="OnlineContacts Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Contact Lenses</span>
@@ -1173,13 +376,11 @@
                 <!-- TrailView -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="trailview.png" 
-                             alt="TrailView Logo" 
-                             class="brand-logo">
+                        <img src="trailview.png" alt="TrailView Logo" class="brand-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Outdoor Adventure</span>
-                        <h3>Trailview</h3>
+                        <h3>TrailView<sup class="tm">™</sup></h3>
                         <p>Rugged outdoor eyewear designed for adventurers and outdoor enthusiasts. Durable frames with specialized lenses for hiking, camping, and extreme sports.</p>
                         <a href="https://www.39dollarglasses.com/trailview" class="btn" style="background-color: #d1fae5; color: var(--primary);">Learn More</a>
                     </div>
@@ -1192,7 +393,7 @@
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Smart Technology</span>
-                        <h3>Lumeo Smart Lenses</h3>
+                        <h3>Lumeo<sup class="tm">™</sup> Smart Lenses</h3>
                         <p>Advanced lenses that automatically adjust to changing light conditions, providing optimal vision in any environment. Perfect for active lifestyles.</p>
                         <a href="#" class="btn" style="background-color: #e0f2fe; color: var(--primary);">Learn More</a>
                     </div>
@@ -1211,49 +412,32 @@
             
             <div class="tech-features fade-up">
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-glasses"></i>
-                    </div>
+                    <div class="tech-icon"><i class="fas fa-glasses"></i></div>
                     <h3>Smart Lens Technology</h3>
-                    <p>Lumeo lenses are prescription lenses optimized for smart glasses, providing seamless integration with digital overlays and augmented reality applications.</p>
+                    <p>Lumeo<sup class="tm">™</sup> lenses are prescription lenses optimized for smart glasses, providing seamless integration with digital overlays and augmented reality applications.</p>
                 </div>
-                
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+                    <div class="tech-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Blue Spectrum Filtering</h3>
-                    <p>Blue495 technology specifically targets the harmful 495nm wavelength, providing superior protection against digital eye strain and high-energy visible light.</p>
+                    <p>Blue495<sup class="tm">™</sup> technology specifically targets the harmful 495nm wavelength, providing superior protection against digital eye strain and high-energy visible light.</p>
                 </div>
-                
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-bed"></i>
-                    </div>
+                    <div class="tech-icon"><i class="fas fa-bed"></i></div>
                     <h3>Circadian Regulation</h3>
-                    <p>OcuSleep lenses filter specific wavelengths that disrupt melatonin production, promoting natural sleep cycles.</p>
+                    <p>OcuSleep<sup class="tm">™</sup> lenses filter specific wavelengths that disrupt melatonin production, promoting natural sleep cycles.</p>
                 </div>
-                
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-shield-virus"></i>
-                    </div>
+                    <div class="tech-icon"><i class="fas fa-shield-virus"></i></div>
                     <h3>Impact Protection</h3>
-                    <p>OcuSafe lenses are made from polycarbonate that's 10x more impact-resistant than regular plastic for maximum safety.</p>
+                    <p>OcuSafe<sup class="tm">™</sup> lenses are made from polycarbonate that's 10x more impact-resistant than regular plastic for maximum safety.</p>
                 </div>
-
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
+                    <div class="tech-icon"><i class="fas fa-brain"></i></div>
                     <h3>Migraine Relief</h3>
-                    <p>Neurolux lenses are specially designed to reduce migraine triggers by filtering specific light wavelengths that can cause headaches and visual discomfort.</p>
+                    <p>Neurolux<sup class="tm">™</sup> lenses are specially designed to reduce migraine triggers by filtering specific light wavelengths that can cause headaches and visual discomfort.</p>
                 </div>
-
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
+                    <div class="tech-icon"><i class="fas fa-eye"></i></div>
                     <h3>Contact Lenses</h3>
                     <p>OnlineContacts.com offers a comprehensive selection of daily, weekly, and monthly contact lenses from leading brands, delivered directly to your door.</p>
                 </div>
@@ -1272,37 +456,23 @@
             <div class="testimonials-grid fade-up">
                 <div class="testimonial-card">
                     <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"The Lumeo lenses are incredible! They automatically adjust throughout the day, and I never have to worry about changing glasses when going from indoors to outdoors."</p>
+                    <p class="testimonial-text">"The Lumeo<sup class="tm">™</sup> lenses are incredible! They automatically adjust throughout the day, and I never have to worry about changing glasses when going from indoors to outdoors."</p>
                     <p class="testimonial-author">- Sarah M., Teacher</p>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"As a software developer, the Neurolux lenses have been a game-changer. No more eye strain after long coding sessions. Worth every penny!"</p>
+                    <p class="testimonial-text">"As a software developer, the Neurolux<sup class="tm">™</sup> lenses have been a game-changer. No more eye strain after long coding sessions. Worth every penny!"</p>
                     <p class="testimonial-author">- Mike Chen, Developer</p>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"TrailView glasses are perfect for my hiking adventures. They're incredibly durable and the specialized lenses make everything crystal clear on the trails."</p>
+                    <p class="testimonial-text">"TrailView<sup class="tm">™</sup> glasses are perfect for my hiking adventures. They're incredibly durable and the specialized lenses make everything crystal clear on the trails."</p>
                     <p class="testimonial-author">- Jessica R., Outdoor Enthusiast</p>
                 </div>
             </div>
@@ -1365,10 +535,10 @@
                     <h4>39DG</h4>
                     <p>Innovative eyewear solutions for every vision need. Premium quality without premium prices.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -1376,14 +546,14 @@
                     <h4>Our Brands</h4>
                     <ul>
                         <li><a href="#">39dollarglasses</a></li>
-                        <li><a href="#">Neurolux Lenses</a></li>
-                        <li><a href="#">Ocusleep Lenses</a></li>
-                        <li><a href="#">Ocusafe Safety Glasses</a></li>
-                        <li><a href="#">Lumeo lenses</a></li>
-                        <li><a href="#">UltimateView Sunglasses</a></li>
+                        <li><a href="#">Neurolux<sup class="tm">™</sup> Lenses</a></li>
+                        <li><a href="#">OcuSleep<sup class="tm">™</sup> Lenses</a></li>
+                        <li><a href="#">OcuSafe<sup class="tm">™</sup> Safety Glasses</a></li>
+                        <li><a href="#">Lumeo<sup class="tm">™</sup> Lenses</a></li>
+                        <li><a href="#">UltimateView<sup class="tm">™</sup> Sunglasses</a></li>
                         <li><a href="https://onlinecontacts.com">OnlineContacts.com</a></li>
-                        <li><a href="https://www.39dollarglasses.com/trailview">TrailView</a></li>
-                        <li><a href="#">Blue495</a></li>
+                        <li><a href="https://www.39dollarglasses.com/trailview">TrailView<sup class="tm">™</sup></a></li>
+                        <li><a href="#">Blue495<sup class="tm">™</sup></a></li>
                     </ul>
                 </div>
                 
@@ -1416,7 +586,7 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop">
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -1432,31 +602,26 @@
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const targetId = this.getAttribute('href').substring(1);
-                const target = document.getElementById(targetId);
-                
-                if (target) {
-                    const headerOffset = 80; // Account for sticky header
-                    const elementPosition = target.offsetTop;
-                    const offsetPosition = elementPosition - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-                
-                // Close mobile menu after clicking
-                const navMenu = document.querySelector('nav ul');
-                const menuBtn = document.querySelector('.mobile-menu-btn i');
-                
-                if (navMenu.classList.contains('show')) {
-                    navMenu.classList.remove('show');
-                    menuBtn.classList.add('fa-bars');
-                    menuBtn.classList.remove('fa-times');
+                const href = this.getAttribute('href');
+                if (href.length > 1) { // only prevent default for internal anchors
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const targetId = href.substring(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        const headerOffset = 80; // Account for sticky header
+                        const elementPosition = target.offsetTop;
+                        const offsetPosition = elementPosition - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                    // Close mobile menu after clicking
+                    const navMenu = document.querySelector('nav ul');
+                    const menuBtn = document.querySelector('.mobile-menu-btn i');
+                    if (navMenu.classList.contains('show')) {
+                        navMenu.classList.remove('show');
+                        menuBtn.classList.add('fa-bars');
+                        menuBtn.classList.remove('fa-times');
+                    }
                 }
             });
         });
@@ -1470,41 +635,25 @@
         });
 
         // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-up elements
-        document.querySelectorAll('.fade-up').forEach(el => {
-            observer.observe(el);
-        });
+        (function(){
+            try {
+                const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('animated'); } });
+                }, observerOptions);
+                document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+            } catch (e) {
+                // If IntersectionObserver not supported, reveal immediately
+                document.querySelectorAll('.fade-up').forEach(el => el.classList.add('animated'));
+            }
+        })();
 
         // Scroll to top button
         const scrollTopBtn = document.getElementById('scrollTop');
-        
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
+            if (window.pageYOffset > 300) { scrollTopBtn.classList.add('visible'); } else { scrollTopBtn.classList.remove('visible'); }
         });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+        scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
         // Newsletter form submission
         document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
@@ -1521,43 +670,51 @@
             const counters = document.querySelectorAll('.stat-number');
             counters.forEach(counter => {
                 const target = counter.innerText;
-                // Make 1M+ appear instantly
-                if (target === '1M+') {
-                    counter.innerText = target;
-                    return;
-                }
-                const numericTarget = parseInt(target.replace(/[^\d]/g, ''));
+                if (target === '1M+') { counter.innerText = target; return; }
+                const numericTarget = parseInt(target.replace(/[^0-9]/g, ''));
                 if (numericTarget > 0) {
                     let current = 0;
                     const increment = numericTarget / 100;
                     const timer = setInterval(() => {
                         current += increment;
-                        if (current >= numericTarget) {
-                            counter.innerText = target;
-                            clearInterval(timer);
-                        } else {
-                            const suffix = target.includes('K') ? 'K+' : target.includes('%') ? '%' : '';
-                            counter.innerText = Math.floor(current) + suffix;
-                        }
+                        if (current >= numericTarget) { counter.innerText = target; clearInterval(timer); }
+                        else { const suffix = target.includes('K') ? 'K+' : target.includes('%') ? '%' : ''; counter.innerText = Math.floor(current) + suffix; }
                     }, 20);
                 }
             });
         }
 
         // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+        (function(){
+            try {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObserver.unobserve(entry.target); } });
+                }, { threshold: 0.5 });
+                const statsSection = document.querySelector('.stats-grid');
+                if (statsSection) { statsObserver.observe(statsSection); }
+            } catch (e) { animateCounters(); }
+        })();
+    </script>
 
-        const statsSection = document.querySelector('.stats-grid');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
+    <!-- Safety net: ensure content is revealed even if earlier JS fails -->
+    <script>
+      (function(){
+        try {
+          // Mark JS-enabled and reveal any not-yet-animated elements after load
+          document.documentElement.classList.remove('no-js');
+          window.addEventListener('load', function(){
+            setTimeout(function(){
+              document.querySelectorAll('.fade-up:not(.animated), .fade-in:not(.animated)')
+                .forEach(function(el){ el.classList.add('animated'); });
+            }, 300);
+          });
+        } catch(e){
+          // Last resort: force visible
+          var style=document.createElement('style');
+          style.textContent='.fade-up,.fade-in{opacity:1 !important;transform:none !important;}';
+          document.head.appendChild(style);
         }
+      })();
     </script>
 </body>
 </html>
