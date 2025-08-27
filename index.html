@@ -177,7 +177,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: #000000;
             color: white;
             padding: 60px 0;
             text-align: center;
@@ -490,8 +490,8 @@
         }
         
         .neurolux-logo {
-            max-width: 50%;
-            max-height: 80px;
+            max-width: 65%;
+            max-height: 104px;
             padding: 15px;
         }
         
@@ -538,8 +538,8 @@
         
         /* Technology Section */
         .tech-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #f1f5f9;
+            color: var(--dark);
             position: relative;
             overflow: hidden;
         }
@@ -566,24 +566,24 @@
         }
         
         .tech-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: white;
+            border: 1px solid var(--light-gray);
             border-radius: 20px;
             padding: 40px 30px;
             text-align: center;
             transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .tech-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
         
         .tech-icon {
             font-size: 3rem;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            background: var(--gradient-3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -783,8 +783,8 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: white;
+            color: var(--dark);
             padding: 60px 0 30px;
         }
         
@@ -829,14 +829,14 @@
         }
         
         .footer-col ul li a {
-            color: #cbd5e1;
+            color: var(--gray);
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
         }
         
         .footer-col ul li a:hover {
-            color: white;
+            color: var(--dark);
             padding-left: 10px;
         }
         
@@ -866,8 +866,8 @@
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #94a3b8;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
             font-size: 0.9rem;
         }
 
@@ -1008,10 +1008,8 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
-                <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-                    <text x="10" y="30" font-family="Montserrat, sans-serif" font-weight="800" font-size="28" fill="#1e40af">39DG.CO</text>
-                </svg>
-                <span class="logo-tagline">bringing vision to life</span>
+                <img src="39dg.co.png" alt="39DG.CO Logo" style="height: 40px; width: auto;">
+                <span class="logo-tagline" style="color: #000000;">bringing vision to life</span>
             </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -1031,15 +1029,6 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="floating-element">
-            <i class="fas fa-glasses" style="font-size: 2rem; color: rgba(255,255,255,0.2);"></i>
-        </div>
-        <div class="floating-element">
-            <i class="fas fa-eye" style="font-size: 1.5rem; color: rgba(255,255,255,0.2);"></i>
-        </div>
-        <div class="floating-element">
-            <i class="fas fa-sun" style="font-size: 2.5rem; color: rgba(255,255,255,0.2);"></i>
-        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Revolutionizing Vision Through Innovation</h1>
@@ -1061,16 +1050,33 @@
             </div>
             
             <div class="brands-grid fade-up">
-                <!-- Lumeo Smart Lenses -->
+                <!-- 39dollarglasses.com Core -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <i class="fas fa-lightbulb" style="font-size: 3rem; color: #3b82f6;"></i>
+                        <img src="39dollarglasses.svg" 
+                             alt="39 Dollar Glasses Logo" 
+                             class="brand-logo">
                     </div>
                     <div class="brand-content">
-                        <span class="brand-tag">Smart Technology</span>
-                        <h3>Lumeo Smart Lenses</h3>
-                        <p>Advanced lenses that automatically adjust to changing light conditions, providing optimal vision in any environment. Perfect for active lifestyles.</p>
-                        <a href="#" class="btn" style="background-color: #e0f2fe; color: var(--primary);">Learn More</a>
+                        <span class="brand-tag">Core Brand</span>
+                        <h3>39dollarglasses.com</h3>
+                        <p>Our flagship brand offering high-quality prescription eyewear at revolutionary prices. Premium frames and lenses without the premium price tag.</p>
+                        <a href="#" class="btn" style="background-color: #ffedd5; color: var(--primary);">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- OcuSafe Safety Glasses -->
+                <div class="brand-card">
+                    <div class="brand-image">
+                        <img src="ocusafe.png" 
+                             alt="OcuSafe Logo" 
+                             class="brand-logo">
+                    </div>
+                    <div class="brand-content">
+                        <span class="brand-tag">Protection</span>
+                        <h3>OcuSafe Safety Glasses</h3>
+                        <p>Industrial-grade protective eyewear that meets ANSI Z87.1 standards. Combines safety with comfort for all-day wear in demanding environments.</p>
+                        <a href="#" class="btn" style="background-color: #dcfce7; color: var(--primary);">Learn More</a>
                     </div>
                 </div>
                 
@@ -1089,6 +1095,21 @@
                     </div>
                 </div>
                 
+                <!-- UltimateView Sunglasses -->
+                <div class="brand-card">
+                    <div class="brand-image">
+                        <img src="ultimateview.png" 
+                             alt="UltimateView Logo" 
+                             class="brand-logo">
+                    </div>
+                    <div class="brand-content">
+                        <span class="brand-tag">UV Protection</span>
+                        <h3>UltimateView Sunglasses</h3>
+                        <p>Premium polarized sunglasses with 100% UV protection. Fashion-forward designs with advanced lens technology for superior visual clarity.</p>
+                        <a href="#" class="btn" style="background-color: #cffafe; color: var(--primary);">Learn More</a>
+                    </div>
+                </div>
+                
                 <!-- OcuSleep Lenses -->
                 <div class="brand-card">
                     <div class="brand-image">
@@ -1103,49 +1124,19 @@
                         <a href="#" class="btn" style="background-color: #fce7f3; color: var(--primary);">Learn More</a>
                     </div>
                 </div>
-                
-                <!-- OcuSafe Safety Glasses -->
+
+                <!-- Blue495 -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="ocusafe.png" 
-                             alt="OcuSafe Logo" 
+                        <img src="blue495.png" 
+                             alt="Blue495 Logo" 
                              class="brand-logo">
                     </div>
                     <div class="brand-content">
-                        <span class="brand-tag">Protection</span>
-                        <h3>OcuSafe Safety Glasses</h3>
-                        <p>Industrial-grade protective eyewear that meets ANSI Z87.1 standards. Combines safety with comfort for all-day wear in demanding environments.</p>
-                        <a href="#" class="btn" style="background-color: #dcfce7; color: var(--primary);">Learn More</a>
-                    </div>
-                </div>
-                
-                <!-- 39dollarglasses.com Core -->
-                <div class="brand-card">
-                    <div class="brand-image">
-                        <img src="39dollarglasses.svg" 
-                             alt="39 Dollar Glasses Logo" 
-                             class="brand-logo">
-                    </div>
-                    <div class="brand-content">
-                        <span class="brand-tag">Core Brand</span>
-                        <h3>39dollarglasses.com</h3>
-                        <p>Our flagship brand offering high-quality prescription eyewear at revolutionary prices. Premium frames and lenses without the premium price tag.</p>
-                        <a href="#" class="btn" style="background-color: #ffedd5; color: var(--primary);">Learn More</a>
-                    </div>
-                </div>
-                
-                <!-- UltimateView Sunglasses -->
-                <div class="brand-card">
-                    <div class="brand-image">
-                        <img src="ultimateview.png" 
-                             alt="UltimateView Logo" 
-                             class="brand-logo">
-                    </div>
-                    <div class="brand-content">
-                        <span class="brand-tag">UV Protection</span>
-                        <h3>UltimateView Sunglasses</h3>
-                        <p>Premium polarized sunglasses with 100% UV protection. Fashion-forward designs with advanced lens technology for superior visual clarity.</p>
-                        <a href="#" class="btn" style="background-color: #cffafe; color: var(--primary);">Learn More</a>
+                        <span class="brand-tag">Blue Light Defense</span>
+                        <h3>Blue495</h3>
+                        <p>Advanced blue light filtering technology that specifically targets the 495nm wavelength. Scientifically designed to reduce digital eye strain and protect against harmful high-energy visible light.</p>
+                        <a href="#" class="btn" style="background-color: #dbeafe; color: var(--primary);">Learn More</a>
                     </div>
                 </div>
 
@@ -1178,19 +1169,17 @@
                         <a href="https://www.39dollarglasses.com/trailview" class="btn" style="background-color: #d1fae5; color: var(--primary);">Learn More</a>
                     </div>
                 </div>
-
-                <!-- Blue495 -->
+                
+                <!-- Lumeo Smart Lenses -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="blue495.png" 
-                             alt="Blue495 Logo" 
-                             class="brand-logo">
+                        <i class="fas fa-lightbulb" style="font-size: 3rem; color: #3b82f6;"></i>
                     </div>
                     <div class="brand-content">
-                        <span class="brand-tag">Blue Light Defense</span>
-                        <h3>Blue495</h3>
-                        <p>Advanced blue light filtering technology that specifically targets the 495nm wavelength. Scientifically designed to reduce digital eye strain and protect against harmful high-energy visible light.</p>
-                        <a href="#" class="btn" style="background-color: #dbeafe; color: var(--primary);">Learn More</a>
+                        <span class="brand-tag">Smart Technology</span>
+                        <h3>Lumeo Smart Lenses</h3>
+                        <p>Advanced lenses that automatically adjust to changing light conditions, providing optimal vision in any environment. Perfect for active lifestyles.</p>
+                        <a href="#" class="btn" style="background-color: #e0f2fe; color: var(--primary);">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -1517,6 +1506,11 @@
             const counters = document.querySelectorAll('.stat-number');
             counters.forEach(counter => {
                 const target = counter.innerText;
+                // Make 1M+ appear instantly
+                if (target === '1M+') {
+                    counter.innerText = target;
+                    return;
+                }
                 const numericTarget = parseInt(target.replace(/[^\d]/g, ''));
                 if (numericTarget > 0) {
                     let current = 0;
