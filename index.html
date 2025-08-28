@@ -112,6 +112,7 @@
         .brand-card:hover .brand-image::after { opacity: 0.1; }
         .brand-logo { max-width: 70%; max-height: 120px; object-fit: contain; transition: all 0.4s ease; z-index: 2; position: relative; }
         .neurolux-logo { max-width: 65%; max-height: 104px; padding: 15px; }
+        .lumeo-logo { max-width: 65%; max-height: 104px; padding: 15px; }
         .brand-card:hover .brand-logo { transform: scale(1.1); }
         .brand-content { padding: 30px; }
         .brand-content h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--secondary); transition: color 0.3s ease; }
@@ -197,6 +198,7 @@
             .btn { display: block; width: 100%; margin: 10px auto; text-align: center; }
             .stats-grid { grid-template-columns: 1fr; }
             .neurolux-logo { max-width: 60%; max-height: 70px; }
+            .lumeo-logo { max-width: 60%; max-height: 70px; }
             .newsletter-form { flex-direction: column; gap: 15px; }
             .floating-element { display: none; }
             .why-grid, .brands-grid, .tech-features, .testimonials-grid { grid-template-columns: 1fr; }
@@ -389,7 +391,7 @@
                 <!-- Lumeo Smart Lenses -->
                 <div class="brand-card">
                     <div class="brand-image">
-                        <i class="fas fa-lightbulb" style="font-size: 3rem; color: #3b82f6;"></i>
+                        <img src="lumeo.png" alt="Lumeo Logo" class="brand-logo lumeo-logo">
                     </div>
                     <div class="brand-content">
                         <span class="brand-tag">Smart Technology</span>
@@ -591,6 +593,9 @@
     </button>
 
     <script>
+        // Mark JS-enabled
+        document.documentElement.classList.remove('no-js');
+
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             document.querySelector('nav ul').classList.toggle('show');
@@ -599,11 +604,11 @@
             icon.classList.toggle('fa-times');
         });
         
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for anchor links (internal only)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href.length > 1) { // only prevent default for internal anchors
+                if (href && href.length > 1) {
                     e.preventDefault();
                     e.stopPropagation();
                     const targetId = href.substring(1);
@@ -700,8 +705,6 @@
     <script>
       (function(){
         try {
-          // Mark JS-enabled and reveal any not-yet-animated elements after load
-          document.documentElement.classList.remove('no-js');
           window.addEventListener('load', function(){
             setTimeout(function(){
               document.querySelectorAll('.fade-up:not(.animated), .fade-in:not(.animated)')
@@ -709,7 +712,6 @@
             }, 300);
           });
         } catch(e){
-          // Last resort: force visible
           var style=document.createElement('style');
           style.textContent='.fade-up,.fade-in{opacity:1 !important;transform:none !important;}';
           document.head.appendChild(style);
