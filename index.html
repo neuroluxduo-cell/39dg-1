@@ -231,6 +231,40 @@
             nav ul.show{ display:flex; }
             nav ul li{ margin:10px 0; }
         }
+        /* Hide the "Learn More" buttons under brand cards */
+.brand-card .btn {
+  display: none !important;
+}
+
+/* Reduce the vertical size of brand cards */
+.brand-image {
+  height: 160px; /* was 220px */
+  min-height: 120px;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-content {
+  padding: 18px 20px; /* was 30px */
+}
+
+/* Reduce the logo size so images fit nicely in the smaller image area */
+.brand-logo {
+  max-width: 70%;
+  max-height: 90px; /* reduce max height from ~120px */
+  object-fit: contain;
+}
+
+/* Slightly tighten spacing between cards */
+.brands-grid {
+  gap: 20px; /* was 30px */
+}
+
+/* Optional: slightly reduce card's overall vertical spacing */
+.brand-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
     </style>
 </head>
 <body>
