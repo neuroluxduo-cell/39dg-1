@@ -265,6 +265,19 @@
   border-radius: 16px;
   overflow: hidden;
 }
+        .brand-logo.lumeo-logo {
+  max-width: none;
+  max-height: none;
+  width: 260px;    /* control the visible width */
+  height: auto;
+}
+
+/* Ensure it doesn't get too small on mobile — tweak as needed */
+@media (max-width: 768px) {
+  .brand-logo.lumeo-logo {
+    width: 160px;
+  }
+}
     </style>
 </head>
 <body>
